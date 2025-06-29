@@ -1010,13 +1010,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701001934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a17f2981ea5b33540a30dc0311fa6a2d, type: 3}
+  m_Script: {fileID: 11500000, guid: eed33d2523517084eb35fd52c6ab31a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: 15
-  posMax: 30
-  posMin: 5
-  newPos: {fileID: 0}
+  thermometer: {fileID: 1701001934}
+  movementSpeed: 5
 --- !u!1 &1757258105
 GameObject:
   m_ObjectHideFlags: 0
