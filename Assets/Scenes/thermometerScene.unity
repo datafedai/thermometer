@@ -961,6 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1701001936}
   - component: {fileID: 1701001937}
+  - component: {fileID: 1701001938}
   m_Layer: 0
   m_Name: Thermometer
   m_TagString: Untagged
@@ -1000,6 +1001,22 @@ MonoBehaviour:
   tempMax: 50
   tempMin: -20
   tempBar: {fileID: 2076305}
+--- !u!114 &1701001938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701001934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17f2981ea5b33540a30dc0311fa6a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pos: 15
+  posMax: 30
+  posMin: 5
+  newPos: {fileID: 0}
 --- !u!1 &1757258105
 GameObject:
   m_ObjectHideFlags: 0
