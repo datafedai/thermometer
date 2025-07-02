@@ -329,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: -10
 --- !u!1 &132972002
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: 10
 --- !u!65 &132972005
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -469,15 +471,15 @@ GameObject:
   - component: {fileID: 276672585}
   - component: {fileID: 276672584}
   - component: {fileID: 276672583}
-  - component: {fileID: 276672587}
   - component: {fileID: 276672588}
+  - component: {fileID: 276672589}
   m_Layer: 0
   m_Name: thermoTriggerZone
   m_TagString: thermoTZ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &276672582
 Transform:
   m_ObjectHideFlags: 0
@@ -567,20 +569,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276672581}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &276672587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276672581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca7a29fbfc9d954e97324a50415010e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  therm: {fileID: 1701001934}
-  thermMove: {fileID: 1701001934}
 --- !u!54 &276672588
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -608,6 +596,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &276672589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276672581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3713811bfa0be4c41b6d1590416d3654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempRef: {fileID: 1701001939}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: 10
 --- !u!65 &464476149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1148,6 +1150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: 10
 --- !u!54 &610690071
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1634,6 +1637,7 @@ GameObject:
   - component: {fileID: 1701001936}
   - component: {fileID: 1701001938}
   - component: {fileID: 1701001939}
+  - component: {fileID: 1701001940}
   m_Layer: 0
   m_Name: Thermometer
   m_TagString: therm
@@ -1689,6 +1693,27 @@ MonoBehaviour:
   tempMin: -20
   tempBar: {fileID: 2076305}
   ratio: 0
+--- !u!65 &1701001940
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701001934}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1757258105
 GameObject:
   m_ObjectHideFlags: 0

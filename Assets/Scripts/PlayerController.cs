@@ -49,16 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
 
-        if (moveValue == new Vector2(1,0))
-        {
-            transform.Translate(Time.deltaTime * movementSpeed, 0, 0);
+        transform.Translate(moveValue.x * Time.deltaTime * movementSpeed, 0, 0);
 
-        }
-        else if (moveValue == new Vector2(-1,0))
-        {
-            transform.Translate(-Time.deltaTime * movementSpeed, 0, 0);
-
-        }
 
         // if thermometer hits a wall, it stops
         // Q: how to use BoxTrigger to detect collision with walls and stop movement
