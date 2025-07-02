@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using UnityEditor.EventSystems;
 using UnityEngine;
 
 public class Temp : MonoBehaviour
@@ -8,11 +10,12 @@ public class Temp : MonoBehaviour
     public float tempMax = 50;
     public float tempMin = -20;
     public GameObject tempBar;
+    public float ratio;
 
 
     private float getFillRatio(float temp)
     {
-        float ratio = (temp - tempMin) / (tempMax - tempMin);
+        ratio = (temp - tempMin) / (tempMax - tempMin);
 
         if (temp > tempMax)
             return 1;
@@ -22,19 +25,25 @@ public class Temp : MonoBehaviour
         return ratio;
     
     }
+
+    public void updateTemp(float temp)
+    {
+        temperatureC += temp;
+        Debug.Log("temperatureC: here " + temperatureC);
+    }
+
     void Start()
     {
-
-
-
 
 
     }
 
     // Update is called once per frame
+
     void Update()
     {
-        float ratio = 30;
+
+        //ratio = 30;
         ratio = getFillRatio(temperatureC);
         ratio *= 0.2F;
 
