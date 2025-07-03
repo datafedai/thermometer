@@ -24,7 +24,7 @@ public class HeatSourceTrigger : MonoBehaviour
         {
             // We have the thermometer object
             // We now know that the other gameObject IS the thermometer
-
+            Debug.Log($"Thermometer collide with {this.gameObject.name}");
             Temp tempRef = otherGameobject.GetComponent<Temp>();
 
             tempRef.updateTemp(heatInfluence);
@@ -103,8 +103,25 @@ public class HeatSourceTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+
+        GameObject otherGameobject = other.gameObject;
+
+        if (otherGameobject.GetComponent<Temp>() != null)
+        {
+            // We have the thermometer object
+            // We now know that the other gameObject IS the thermometer
+
+            Temp tempRef = otherGameobject.GetComponent<Temp>();
+
+            tempRef.updateTemp(-heatInfluence);
+
+        }
+
+
+
         // Destroy everything that leaves the trigger
         //Destroy(other.gameObject);
+        /*
         if (other.gameObject.tag == "campfireTZ")
         {
             Debug.Log("The thermometer exited the campfire trigger zone.");
@@ -123,7 +140,7 @@ public class HeatSourceTrigger : MonoBehaviour
             Debug.Log("Temperature increased back to: " + tempScript.temperatureC + " degrees Celsius.");
 
         }
-
+        */
 
     }
 
