@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.WSA;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public GameObject thermometer; // themometer controller
     public float movementSpeed = iSpeed;
     InputAction moveAction;
+    public GameObject test;
 
     private void OnEnable()
     {
@@ -16,21 +18,21 @@ public class PlayerController : MonoBehaviour
 
     public void stopThermometer(string direction)
     {
-        Debug.Log("Current position X: " + transform.position.x);
+        //Debug.Log("Current position X: " + transform.position.x);
 
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
 
 
         if (direction == "right" && moveValue == new Vector2(1, 0))
         {
-            Debug.Log("The thermometer stopped moving right.");
+            //Debug.Log("The thermometer stopped moving right.");
             // code to stop the thermometer from moving
             movementSpeed = 0f; // stop the thermometer from moving
         }
         else if (direction == "left" && moveValue == new Vector2(-1, 0))
         {
 
-            Debug.Log("The thermometer stopped moving left.");
+            //Debug.Log("The thermometer stopped moving left.");
             // code to stop the thermometer from moving
             movementSpeed = 0f; // stop the thermometer from moving
 
@@ -60,11 +62,11 @@ public class PlayerController : MonoBehaviour
         // 
         // 
         /*
-        if (transform.position.x < -7f)
+        if (transform.position.x < -7)
         {
-            transform.position = new Vector3(-7f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-6, 0, 0);
         }
-        
+
         else if (transform.position.x > 43f)
         {
             transform.position = new Vector3(43f, transform.position.y, transform.position.z);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,24 +11,33 @@ public class HeatSourceTrigger : MonoBehaviour
 {
     public GameObject therm; // themometer temperature controller
     public GameObject thermMove; // thermometer movement controller
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     InputAction moveAction;
-    public float heatInfluence = 10f;
+    const float heatInfluence = 10f;
+    Dictionary<string, float> heatInfluenceDic = new Dictionary<string, float>();
+
+   
+
 
     private void OnTriggerEnter(Collider other)
     {
 
+
+        //Debug.Log("this.tag:1 " + this.gameObject.tag);
         GameObject otherGameobject = other.gameObject;
 
         if (otherGameobject.GetComponent<Temp>() != null)
         {
+            //Debug.Log("this.tag:2 " + this.gameObject.tag);
             // We have the thermometer object
             // We now know that the other gameObject IS the thermometer
-            Debug.Log($"Thermometer collide with {this.gameObject.name}");
-            Temp tempRef = otherGameobject.GetComponent<Temp>();
+            //Debug.Log("other: " + other.name); // thermometer
+            //Debug.Log("this: " + this.name); // heat source trigger
+            //Debug.Log($"Thermometer collided with {this.gameObject.name}");
+            //Debug.Log("dictionary: " + this.name + " = " + heatInfluenceDic[this.name]);
 
-            tempRef.updateTemp(heatInfluence);
+            Temp tempRef = otherGameobject.GetComponent<Temp>();
+            tempRef.updateTemp(heatInfluenceDic[this.name]);
 
         }
 
@@ -35,26 +45,22 @@ public class HeatSourceTrigger : MonoBehaviour
 
 
 
-        /*
+        //Debug.Log("this.tag:3 " + this.gameObject.tag);
+
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
 
-        if (other.gameObject.tag == "leftWall")
+        if (this.gameObject.tag == "leftWall")
         {
-            Debug.Log("The thermometer hit the left wall.");
+            //Debug.Log("this.tag:4 " + this.gameObject.tag);
+            //Debug.Log("The thermometer hit the left wall.");
 
             //stop moving thermometer
             //PlayerController pcScript = thermMove.GetComponent<PlayerController>();
             //pcScript.stopThermometer("left"); // stop the player controller from moving
 
         }
-        */
+        
         // left wall
-
-
-
-
-
-
 
 
 
@@ -110,11 +116,13 @@ public class HeatSourceTrigger : MonoBehaviour
         {
             // We have the thermometer object
             // We now know that the other gameObject IS the thermometer
-
+            //Debug.Log("other: " + other.name); // thermometer
+            //Debug.Log("this: " + this.name); // heat source trigger
+            //Debug.Log($"Thermometer exited from {this.gameObject.name}");
             Temp tempRef = otherGameobject.GetComponent<Temp>();
 
-            tempRef.updateTemp(-heatInfluence);
-
+            //tempRef.updateTemp(-heatInfluence);
+            tempRef.updateTemp(-heatInfluenceDic[this.name]);
         }
 
 
@@ -149,6 +157,13 @@ public class HeatSourceTrigger : MonoBehaviour
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
+
+        // populate heatInfluenceDic
+        heatInfluenceDic.Add("IcecubeTZ",-5f );
+        heatInfluenceDic.Add("DryiceCubeTZ", -15f);
+        heatInfluenceDic.Add("CampfireTZ", 10f);
+        heatInfluenceDic.Add("VolcanoRockTZ", 20f);
+
     }
 
     private void Update()

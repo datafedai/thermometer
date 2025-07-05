@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using TMPro;
 using UnityEditor.EventSystems;
 using UnityEngine;
 
@@ -6,9 +7,9 @@ public class Temp : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public float temperatureC = 25;
-    public float tempMax = 50;
-    public float tempMin = -20;
+    public float temperatureC = 20f;
+    public float tempMax = 40;
+    public float tempMin = 0;
     public GameObject tempBar;
     public float ratio;
 
@@ -26,10 +27,11 @@ public class Temp : MonoBehaviour
     
     }
 
-    public void updateTemp(float temp)
+    public void updateTemp(float heatInfluence)
     {
-        temperatureC += temp;
-        Debug.Log("temperatureC: here " + temperatureC);
+        // Update the temperature based on the heat influence
+        temperatureC = temperatureC + heatInfluence;
+        //Debug.Log("updated_temperatureC: " + temperatureC);
     }
 
     void Start()
@@ -42,15 +44,20 @@ public class Temp : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log("temperatureC: " + temperatureC);
 
-        //ratio = 30;
         ratio = getFillRatio(temperatureC);
         ratio *= 0.2F;
+        //Debug.Log("ratio: " + ratio);
 
         Vector3 tempBarScale = new Vector3(0.2F, ratio, 0.2F);
-
-        tempBar.transform.localScale = tempBarScale;
-
-
+        //Debug.Log("tempBarScale: " + tempBarScale.y);
+        //Debug.Log("tempBar.transform.localScale: " + tempBar.transform.localScale.y);
+        float t = Mathf.Abs(tempBarScale.y - tempBar.transform.localScale.y);
+       
+        tempBar.transform.localScale = Vector3.Lerp(tempBar.transform.localScale, tempBarScale, t*0.2f);
+        // previopus code below:
+        //tempBar.transform.localScale = tempBarScale;
+   
     }
 }
