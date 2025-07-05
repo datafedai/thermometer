@@ -44,8 +44,6 @@ public class Temp : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("temperatureC: " + temperatureC);
-
         ratio = getFillRatio(temperatureC);
         ratio *= 0.2F;
         //Debug.Log("ratio: " + ratio);
@@ -53,11 +51,17 @@ public class Temp : MonoBehaviour
         Vector3 tempBarScale = new Vector3(0.2F, ratio, 0.2F);
         //Debug.Log("tempBarScale: " + tempBarScale.y);
         //Debug.Log("tempBar.transform.localScale: " + tempBar.transform.localScale.y);
+        //Debug.Log(1/(tempBar.transform.localScale.y-tempBarScale.y));
+
+        // tempBar changes only along the y-axis
+        // t is the difference between the current scale and the target scale
+        // and is used to control the interpolation speed
+        // if t is small, the interpolation will be slower
+        // t is devide by 15f to slow down the interpolation speed
         float t = Mathf.Abs(tempBarScale.y - tempBar.transform.localScale.y);
        
-        tempBar.transform.localScale = Vector3.Lerp(tempBar.transform.localScale, tempBarScale, t*0.2f);
-        // previopus code below:
+        tempBar.transform.localScale = Vector3.Lerp(tempBar.transform.localScale, tempBarScale, t/15f);
+        // No interpolation code below:
         //tempBar.transform.localScale = tempBarScale;
-   
     }
 }

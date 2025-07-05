@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 59264400}
   - component: {fileID: 59264403}
   m_Layer: 0
-  m_Name: IcecubeTriggerZone
+  m_Name: IcecubeTZ
   m_TagString: icecubeTZ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1494,7 +1494,7 @@ GameObject:
   - component: {fileID: 610690072}
   - component: {fileID: 610690070}
   m_Layer: 0
-  m_Name: campfireTriggerZone
+  m_Name: CampfireTZ
   m_TagString: campfireTZ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1771,7 +1771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378038395}
   m_Layer: 0
-  m_Name: campfire
+  m_Name: Campfire
   m_TagString: campfire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2106,8 +2106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   temperatureC: 20
-  tempMax: 35
-  tempMin: 5
+  tempMax: 40
+  tempMin: 0
   tempBar: {fileID: 2076305}
   ratio: 0
 --- !u!114 &1701001944

@@ -13,13 +13,16 @@ public class HeatSourceTrigger : MonoBehaviour
     public GameObject thermMove; // thermometer movement controller
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     InputAction moveAction;
-    const float heatInfluence = 10f;
+
+    //const float heatInfluence = 10f;
+    // Dictionary to hold heat influence values for different heat sources
+    // populated in Start()
     Dictionary<string, float> heatInfluenceDic = new Dictionary<string, float>();
 
    
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // other is the object that entered the trigger collider
     {
 
 
