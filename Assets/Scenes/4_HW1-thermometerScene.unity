@@ -329,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: -10
 --- !u!1 &118357886
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: -30
 --- !u!65 &118357889
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -486,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: 10
 --- !u!65 &132972005
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -698,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: 30
 --- !u!4 &182246152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8829451551789304537, guid: e91fa0fac941e714e8c4d5709097019f, type: 3}
@@ -1341,7 +1345,6 @@ GameObject:
   - component: {fileID: 464476151}
   - component: {fileID: 464476150}
   - component: {fileID: 464476149}
-  - component: {fileID: 464476147}
   - component: {fileID: 464476153}
   m_Layer: 0
   m_Name: WallRight
@@ -1350,20 +1353,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &464476147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464476146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca7a29fbfc9d954e97324a50415010e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  therm: {fileID: 0}
-  thermMove: {fileID: 0}
 --- !u!65 &464476149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1529,6 +1518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: 10
 --- !u!65 &610690072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2030,7 +2020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thermometer: {fileID: 0}
   movementSpeed: 10
-  test: {fileID: 1701001934}
 --- !u!65 &1701001940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2093,6 +2082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   therm: {fileID: 0}
   thermMove: {fileID: 0}
+  heatInfluence: 10
 --- !u!114 &1701001943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2122,7 +2112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fc28ea8e1a2914fb772512dd2ea08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visitedHeatSources: []
 --- !u!1 &1757258105
 GameObject:
   m_ObjectHideFlags: 0

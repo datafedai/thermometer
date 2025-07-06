@@ -12,7 +12,7 @@ public class HeatSourceTrigger : MonoBehaviour
 
     // Dictionary to hold heat influence values 
     // for different heat sources populated in Start()
-    Dictionary<string, float> heatInfluenceDic = new Dictionary<string, float>();
+    public float heatInfluence = 10f;
 
     // Start is called once before the first execution of Update 
     // after the MonoBehaviour is created
@@ -42,7 +42,7 @@ public class HeatSourceTrigger : MonoBehaviour
             // update the temperature based on the heat influence value
             // of the heat source from the dictionary
             Temp tempRef = otherGameobject.GetComponent<Temp>();
-            tempRef.updateTemp(heatInfluenceDic[this.name]);
+            tempRef.updateTemp(heatInfluence);
         }
 
         // move the thermometer based on the input from the keyboard
@@ -65,7 +65,7 @@ public class HeatSourceTrigger : MonoBehaviour
             Temp tempRef = otherGameobject.GetComponent<Temp>();
 
             //reverse the heat influence
-            tempRef.updateTemp(-heatInfluenceDic[this.name]);
+            tempRef.updateTemp(-heatInfluence);
         }
 
     }
@@ -75,12 +75,6 @@ public class HeatSourceTrigger : MonoBehaviour
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
-
-        // populate heatInfluenceDic
-        heatInfluenceDic.Add("IcecubeTZ",-5f );
-        heatInfluenceDic.Add("DryiceCubeTZ", -15f);
-        heatInfluenceDic.Add("CampfireTZ", 10f);
-        heatInfluenceDic.Add("VolcanoRockTZ", 20f);
 
     }
 
