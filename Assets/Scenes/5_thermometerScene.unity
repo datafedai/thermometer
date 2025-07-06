@@ -530,7 +530,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 10e499a9223807349b0b0d8364626216, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1342,7 +1342,6 @@ GameObject:
   - component: {fileID: 464476150}
   - component: {fileID: 464476149}
   - component: {fileID: 464476147}
-  - component: {fileID: 464476153}
   m_Layer: 0
   m_Name: WallRight
   m_TagString: rightWall
@@ -1408,7 +1407,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 10e499a9223807349b0b0d8364626216, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1453,33 +1452,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &464476153
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464476146}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &610690068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +1960,6 @@ GameObject:
   - component: {fileID: 1701001936}
   - component: {fileID: 1701001938}
   - component: {fileID: 1701001944}
-  - component: {fileID: 1701001942}
   - component: {fileID: 1701001943}
   - component: {fileID: 1701001940}
   - component: {fileID: 1701001941}
@@ -2030,7 +2001,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thermometer: {fileID: 0}
   movementSpeed: 10
-  test: {fileID: 1701001934}
 --- !u!65 &1701001940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2077,22 +2047,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1701001942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701001934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca7a29fbfc9d954e97324a50415010e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  therm: {fileID: 0}
-  thermMove: {fileID: 0}
 --- !u!114 &1701001943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2122,7 +2078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fc28ea8e1a2914fb772512dd2ea08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visitedHeatSources: []
 --- !u!1 &1757258105
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class Temp : MonoBehaviour
 
     private float getFillRatio(float temp)
     {
+        // calculate the fill  ratio based on the temperature
         ratio = (temp - tempMin) / (tempMax - tempMin);
 
         if (temp > tempMax)
@@ -24,12 +25,12 @@ public class Temp : MonoBehaviour
             return 0;
 
         return ratio;
-    
     }
 
     public void updateTemp(float heatInfluence)
     {
-        // Update the temperature based on the heat influence
+        // Update the temperature based on the heat influence value
+        // of a heat source
         temperatureC = temperatureC + heatInfluence;
         //Debug.Log("updated_temperatureC: " + temperatureC);
     }

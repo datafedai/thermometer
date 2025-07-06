@@ -4,33 +4,32 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-
-
-
 public class HeatSourceTrigger : MonoBehaviour
 {
     public GameObject therm; // themometer temperature controller
     public GameObject thermMove; // thermometer movement controller
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     InputAction moveAction;
 
-    //const float heatInfluence = 10f;
-    // Dictionary to hold heat influence values for different heat sources
-    // populated in Start()
+    // Dictionary to hold heat influence values 
+    // for different heat sources populated in Start()
     Dictionary<string, float> heatInfluenceDic = new Dictionary<string, float>();
 
-   
-
-
+    // Start is called once before the first execution of Update 
+    // after the MonoBehaviour is created
     private void OnTriggerEnter(Collider other) // other is the object that entered the trigger collider
     {
+        // debug purpose:
+        //Debug.Log("other: " + other.name);
+        //Debug.Log("this: " + this.name);
 
-
-        //Debug.Log("this.tag:1 " + this.gameObject.tag);
+        // other is the collider that entered the trigger
+        // that is, thermometer
         GameObject otherGameobject = other.gameObject;
 
+        // check if thermometer gameobject has Temp component
         if (otherGameobject.GetComponent<Temp>() != null)
         {
+            // debug purpose below:
             //Debug.Log("this.tag:2 " + this.gameObject.tag);
             // We have the thermometer object
             // We now know that the other gameObject IS the thermometer
@@ -39,74 +38,15 @@ public class HeatSourceTrigger : MonoBehaviour
             //Debug.Log($"Thermometer collided with {this.gameObject.name}");
             //Debug.Log("dictionary: " + this.name + " = " + heatInfluenceDic[this.name]);
 
+            // get the themometer's Temp component
+            // update the temperature based on the heat influence value
+            // of the heat source from the dictionary
             Temp tempRef = otherGameobject.GetComponent<Temp>();
             tempRef.updateTemp(heatInfluenceDic[this.name]);
-
         }
 
-
-
-
-
-        //Debug.Log("this.tag:3 " + this.gameObject.tag);
-
-        Vector2 moveValue = moveAction.ReadValue<Vector2>();
-
-        if (this.gameObject.tag == "leftWall")
-        {
-            //Debug.Log("this.tag:4 " + this.gameObject.tag);
-            //Debug.Log("The thermometer hit the left wall.");
-
-            //stop moving thermometer
-            //PlayerController pcScript = thermMove.GetComponent<PlayerController>();
-            //pcScript.stopThermometer("left"); // stop the player controller from moving
-
-        }
-        
-        // left wall
-
-
-
-        /*
-        else if (other.gameObject.tag == "rightWall")
-        {
-            Debug.Log("The thermometer hit the right wall.");
-            // stop moving thermometer
-            //PlayerController pcScript = thermMove.GetComponent<PlayerController>();
-            //pcScript.stopThermometer("right"); // stop the player controller from moving
-        }
-        */
-
-        // right wall
-
-
-
-        /*
-        else if (other.gameObject.tag == "campfireTZ")
-        {
-            Debug.Log("The thermometer entered the campfire trigger zone.");
-            // increase temperature by 10 degrees
-            Temp tempScript = therm.GetComponent<Temp>();
-            tempScript.updateTemp(heatInfluence);
-            Debug.Log("Temperature increased to: " + tempScript.temperatureC + " degrees Celsius.");
-        }
-        */
-        // camp fire
-
-
-
-        /*
-        else if (other.gameObject.tag == "icecubeTZ")
-        {
-            Debug.Log("The thermometer entered the icecube trigger zone.");
-            // drop temperature by 10 degrees
-            Temp tempScript = therm.GetComponent<Temp>();
-            tempScript.updateTemp(heatInfluence);
-            Debug.Log("Temperature decreased to: " + tempScript.temperatureC + " degrees Celsius.");
-
-        }
-        */
-
+        // move the thermometer based on the input from the keyboard
+        //Vector2 moveValue = moveAction.ReadValue<Vector2>();
     }
 
 
@@ -124,34 +64,9 @@ public class HeatSourceTrigger : MonoBehaviour
             //Debug.Log($"Thermometer exited from {this.gameObject.name}");
             Temp tempRef = otherGameobject.GetComponent<Temp>();
 
-            //tempRef.updateTemp(-heatInfluence);
+            //reverse the heat influence
             tempRef.updateTemp(-heatInfluenceDic[this.name]);
         }
-
-
-
-        // Destroy everything that leaves the trigger
-        //Destroy(other.gameObject);
-        /*
-        if (other.gameObject.tag == "campfireTZ")
-        {
-            Debug.Log("The thermometer exited the campfire trigger zone.");
-            // decrease temperature by 5 degrees
-            Temp tempScript = therm.GetComponent<Temp>();
-            tempScript.updateTemp(-5);
-            Debug.Log("Temperature decreased back to: " + tempScript.temperatureC + " degrees Celsius.");
-        }
-
-        else if (other.gameObject.tag == "icecubeTZ")
-        {
-            Debug.Log("The thermometer exited the icecube trigger zone.");
-            // increase temperature by 5 degrees
-            Temp tempScript = therm.GetComponent<Temp>();
-            tempScript.updateTemp(5);
-            Debug.Log("Temperature increased back to: " + tempScript.temperatureC + " degrees Celsius.");
-
-        }
-        */
 
     }
 
