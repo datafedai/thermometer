@@ -6,10 +6,11 @@ using UnityEngine;
 public class Temp : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    public float temperatureC = 20f;
-    public float tempMax = 40;
-    public float tempMin = 0;
+    private float baseTemperature = 0f;
+    private float heatSourceInfluence = 0f;
+    public float currentTemperature = 20f;
+    public float tempMax = 50;
+    public float tempMin = -30;
     public GameObject tempBar;
     public float ratio;
 
@@ -27,13 +28,38 @@ public class Temp : MonoBehaviour
         return ratio;
     }
 
-    public void updateTemp(float heatInfluence)
+    public void updateTemp()
     {
         // Update the temperature based on the heat influence value
         // of a heat source
-        temperatureC = temperatureC + heatInfluence;
-        //Debug.Log("updated_temperatureC: " + temperatureC);
+        currentTemperature = baseTemperature + heatSourceInfluence;
+        //Debug.Log("baseTemperature: " + baseTemperature);
+        //Debug.Log("heatInfluence: " + heatSourceInfluence);
+        //Debug.Log("updated_temperatureC: " + currentTemperature);
     }
+
+    public void heatSourceInfluenceUpdate(float heatInfluence)
+    { 
+        heatSourceInfluence = heatInfluence;
+    }
+
+
+    public void updateBaseTemperature(int dayIndex)
+    {
+        //Debug.Log("dayIndex: " + dayIndex);
+        if (dayIndex % 2 == 0)
+        {
+            baseTemperature = 20f;
+        }
+        else
+        {
+            baseTemperature = 10f;
+        }
+
+        //Debug.Log("base temp: " + baseTemperature);
+
+    }
+
 
     void Start()
     {
@@ -45,7 +71,7 @@ public class Temp : MonoBehaviour
 
     void Update()
     {
-        ratio = getFillRatio(temperatureC);
+        ratio = getFillRatio(currentTemperature);
         ratio *= 0.2F;
         //Debug.Log("ratio: " + ratio);
 

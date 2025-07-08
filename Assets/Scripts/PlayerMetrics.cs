@@ -22,9 +22,26 @@ public class PlayerMetrics : MonoBehaviour
         // debug purpose:
         //Debug.Log("Heat source: " + heatSource.name);
 
-        // add the heat source to the list of visited heat sources if not already visited
-        // and increment the HeatSourcesVisited counter.
-        AddHeatSource(heatSource);
+
+        // check if collider is a heat source
+        // that is, if it has a componemt HeatSourceTrigger
+        HeatSourceTrigger hst = heatSource.GetComponent<HeatSourceTrigger>();
+        if (hst != null)
+        {
+            // if hst is a heat source trigger, call AddHeatSource() 
+            // to add the heat source to the list
+            // and increment the HeatSourcesVisited counter.
+            AddHeatSource(heatSource);
+        }
+        else
+        {
+            // if not a heat source, return
+            Debug.Log(heatSource.name + " is not a heat source.");
+        }
+        
+
+
+
 
         // print the list of visited heat sources
         //Debug.Log("visited heat sources: " + visitedHeatSources);
