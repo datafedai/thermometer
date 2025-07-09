@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Temp tempRef = thermometer.GetComponent<Temp>();
-        tempRef.updateBaseTemperature(dayIndex);
+        tempRef.updateAmbientTemperature(dayIndex);
         tempRef.updateTemp();
 
         // change the day based on the input from the keyboard

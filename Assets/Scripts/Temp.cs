@@ -44,7 +44,7 @@ public class Temp : MonoBehaviour
     }
 
 
-    public void updateBaseTemperature(int dayIndex)
+    public void updateAmbientTemperature(int dayIndex)
     {
         //Debug.Log("dayIndex: " + dayIndex);
         if (dayIndex % 2 == 0)
