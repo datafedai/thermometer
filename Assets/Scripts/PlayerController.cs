@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject directionalLight; // directional light for day/night cycle
     InputAction changeDayAction; // input action for changing day
-    private int dayIndex = 0; // Initialize day index, even=day, odd=night
+    //private int dayIndex = 0; // Initialize day index, even=day, odd=night
+    //private bool dayNightIndex = false; // day:0, night:1
+    private int spaceCount;
     
     //public Quaternion startRotation; // The rotation to start from
     private Quaternion targetRotation;
@@ -57,6 +59,17 @@ public class PlayerController : MonoBehaviour
         directionalLight.transform.Rotate(angle, 0f, 0f, Space.World);
     }
 
+    private bool dayNightIndex(int spaceCount)
+    {
+        if (spaceCount % 2 == 0) // day
+        {
+            return false;
+        }
+        else // night
+        {
+            return true;
+        }
+    }
 
     // PlayerController.cs
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -70,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         //startRotation = Quaternion.Euler(20, 0, 0); 
         //Debug.Log("start rotaion: " + startRotation); 
-        targetRotation = Quaternion.Euler(180-sunTargetAngle, 0, 0); 
+        targetRotation = Quaternion.Euler(180 - sunTargetAngle, 0, 0);
         //Debug.Log("target rotation: " + targetRotation);
         //Debug.Log("rotation1: " + directionalLight.transform.rotation);
 
@@ -81,6 +94,10 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(Quaternion.identity);
         //Debug.Log("rotation2: " + directionalLight.transform.rotation);
         //directionalLight.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, 2f);
+
+        spaceCount = 0;
+        Debug.Log("space count: " + spaceCount);
+        Debug.Log("dayNightIndex(): " + dayNightIndex(spaceCount));
     }
 
     // Update is called once per frame
@@ -97,14 +114,15 @@ public class PlayerController : MonoBehaviour
         // interpolate the rotation of sun(directionalLight) using Lerp
         // if day time
         
-        if (dayIndex % 2 == 0)
+
+        if (dayNightIndex(spaceCount) == false)
         {
             directionalLight.transform.rotation =
                 Quaternion.Slerp(directionalLight.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
         Temp tempRef = thermometer.GetComponent<Temp>();
-        tempRef.updateAmbientTemperature(dayIndex);
+        tempRef.updateAmbientTemperature(dayNightIndex(spaceCount));
         tempRef.updateTemp();
 
         // change the day based on the input from the keyboard
@@ -115,11 +133,12 @@ public class PlayerController : MonoBehaviour
             // for example, you can call a method to change the day in the game
             float changeDayValue = changeDayAction.ReadValue<float>();
             //Debug.Log("Change day value: " + changeDayValue);
-            dayIndex++;
-            Debug.Log("Current day index: " + dayIndex);
+            spaceCount++;
+            Debug.Log("space count: " + spaceCount);
+            Debug.Log("Current day index: " + dayNightIndex(spaceCount));
 
             //directionalLight.transform.Rotate(180f, 0f, 0f, Space.World);
-            if (dayIndex % 2 == 0)
+            if (dayNightIndex(spaceCount) == false)
             {
                 Debug.Log("It's day time now.");
                 // code to change the day to day time

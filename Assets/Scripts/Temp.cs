@@ -44,14 +44,14 @@ public class Temp : MonoBehaviour
     }
 
 
-    public void updateAmbientTemperature(int dayIndex)
+    public void updateAmbientTemperature(bool dayNightIndex)
     {
         //Debug.Log("dayIndex: " + dayIndex);
-        if (dayIndex % 2 == 0)
+        if (dayNightIndex == false) //day
         {
             ambientTemperature = 20f;
         }
-        else
+        else // night
         {
             ambientTemperature = 10f;
         }

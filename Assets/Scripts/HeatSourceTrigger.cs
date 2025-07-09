@@ -66,7 +66,7 @@ public class HeatSourceTrigger : MonoBehaviour
             Temp tempRef = otherGameobject.GetComponent<Temp>();
 
             //reverse the heat influence
-            tempRef.heatSourceInfluenceUpdate(0);
+            tempRef.updateHeatSourceInfluence(0);
             tempRef.updateTemp();
         }
 
