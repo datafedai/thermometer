@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     
     //public Quaternion startRotation; // The rotation to start from
     private Quaternion targetRotation;
-    private float rotationSpeed = 0.5f;
+    private float rotationSpeed = 0.1f;
     private float sunTargetAngle = 50f;
         // ???? 
     private void OnEnable()
@@ -96,10 +96,11 @@ public class PlayerController : MonoBehaviour
 
         // interpolate the rotation of sun(directionalLight) using Lerp
         // if day time
+        
         if (dayIndex % 2 == 0)
         {
             directionalLight.transform.rotation =
-                Quaternion.Lerp(directionalLight.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                Quaternion.Slerp(directionalLight.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
         Temp tempRef = thermometer.GetComponent<Temp>();
