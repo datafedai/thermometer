@@ -31,14 +31,14 @@ public class Temp : MonoBehaviour
     public void updateTemp()
     {
         // Update the temperature based on the heat influence value
-        // of a heat source
+        // of a heat source and ambient temperature
         currentTemperature = ambientTemperature + heatSourceInfluence;
         //Debug.Log("baseTemperature: " + baseTemperature);
         //Debug.Log("heatInfluence: " + heatSourceInfluence);
         //Debug.Log("updated_temperatureC: " + currentTemperature);
     }
 
-    public void heatSourceInfluenceUpdate(float heatInfluence)
+    public void updateHeatSourceInfluence(float heatInfluence)
     { 
         heatSourceInfluence = heatInfluence;
     }

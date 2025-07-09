@@ -42,7 +42,7 @@ public class HeatSourceTrigger : MonoBehaviour
             // update the temperature based on the heat influence value
             // of the heat source from the dictionary
             Temp tempRef = otherGameobject.GetComponent<Temp>();
-            tempRef.heatSourceInfluenceUpdate(heatInfluence);
+            tempRef.updateHeatSourceInfluence(heatInfluence);
             tempRef.updateTemp();
         }
 
