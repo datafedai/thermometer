@@ -11,13 +11,13 @@ public class RotationTest : MonoBehaviour
     public GameObject cyl;
     //public Vector3 targetPos;
     public Vector3 lookCyl;
-    public Vector3 lookTarget;
+    public Vector3 lookCap;
     public Vector3 rotationAxisCap;
     public Vector3 rotationAxisSph;
     public Vector3 rotationAxisSun;
     public GameObject targetSph;
     public GameObject targetCap;
-    public GameObject targetSun;
+    public GameObject targetMoon;
     public GameObject blackPoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,7 +38,7 @@ public class RotationTest : MonoBehaviour
 
         // initial rotation
         lookCyl = new Vector3(1, 1, 0);
-        lookTarget = new Vector3(1, 1, 0);
+        lookCap = new Vector3(1, -1, 0);
         rotationAxisCap = new Vector3(-1, 1, 0);
         rotationAxisSph = new Vector3(1, 1, 0);
         rotationAxisSun = new Vector3(-1, 2, -5);
@@ -61,11 +61,11 @@ public class RotationTest : MonoBehaviour
         cyl.transform.rotation = Quaternion.LookRotation(lookCyl, Vector3.up);
         //Debug.Log("rotation: " + cyl.transform.rotation);
         //cyl.transform.Rotate(look * 100f * Time.deltaTime);
-        targetCap.transform.rotation = Quaternion.LookRotation(lookTarget, Vector3.up);
+        targetCap.transform.rotation = Quaternion.LookRotation(lookCap, Vector3.up);
 
         targetCap.transform.RotateAround(cyl.transform.position, rotationAxisCap, 5 * Time.deltaTime);
         //targetSph.transform.RotateAround(cyl.transform.position, rotationAxisSph, 30 * Time.deltaTime);
-        targetSun.transform.RotateAround(blackPoint.transform.position, rotationAxisSun, 10 * Time.deltaTime);
+        targetMoon.transform.RotateAround(blackPoint.transform.position, rotationAxisSun, 10 * Time.deltaTime);
   
     }
 }

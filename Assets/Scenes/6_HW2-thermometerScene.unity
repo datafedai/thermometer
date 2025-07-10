@@ -2176,8 +2176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca7a29fbfc9d954e97324a50415010e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  therm: {fileID: 0}
-  thermMove: {fileID: 0}
+  therm: {fileID: 1701001934}
+  thermMove: {fileID: 1701001934}
   heatInfluence: 10
 --- !u!114 &1701001944
 MonoBehaviour:
