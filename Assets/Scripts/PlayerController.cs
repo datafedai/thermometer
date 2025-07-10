@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Change day value: " + changeDayValue);
             spaceCount++;
             Debug.Log("space count: " + spaceCount);
-            Debug.Log("Current day index: " + dayNightIndex(spaceCount));
+            Debug.Log("Current day(F) night(T) index: " + dayNightIndex(spaceCount));
 
             //directionalLight.transform.Rotate(180f, 0f, 0f, Space.World);
             if (dayNightIndex(spaceCount) == false)
