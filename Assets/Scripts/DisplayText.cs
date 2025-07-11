@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; // Needed for accessing UI elements like Text
-using TMPro; // Include if using TextMeshPro for text display
+using TMPro;
+using UnityEngine.InputSystem; // Include if using TextMeshPro for text display
 
 
 public class DisplayText : MonoBehaviour
@@ -9,37 +10,103 @@ public class DisplayText : MonoBehaviour
     public GameObject displayTimeMetrics;
     public GameObject displayTempMetrics;
     public GameObject displayVisitMetrics;
-    public GameObject displaySourceMetrics;
+    public GameObject displayHeatSourceMetrics;
     public TextMeshProUGUI displayText1; // Or public Text displayText; if not using TextMeshPro
     public TextMeshProUGUI displayText2; // Or public Text displayText; if not using TextMeshPro
     public TextMeshProUGUI displayText3; // Or public Text displayText; if not using TextMeshPro
     public TextMeshProUGUI displayText4; // Or public Text displayText; if not using TextMeshPro
-    public float currentTemp = 99f; // temp variable
+    public TextMeshProUGUI rightText;
+    private string hSource;
 
+    InputAction keyPressArrow;
+    InputAction keyPressSpace;
+    InputAction keyPressHelp;
+
+    private void OnEnable()
+    {
+        //inputActions.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+    }
+
+
+    private void displayLeftText()
+    {
+        // current time of day: daytime or nighttime
+        PlayerController currentTime = displayTimeMetrics.GetComponent<PlayerController>();
+        displayText1.text = "Time of day: " + currentTime.dayOrNight();
+
+
+        // current temperature
+        Temp currentTemp = displayTempMetrics.GetComponent<Temp>();
+        // Update the text to display the current score
+        displayText2.text = "Temperature: " + currentTemp.currentTemperature.ToString() + " \u00B0C";
+
+
+        // heat source visit countr
+        PlayerMetrics heatSourceVisits = displayVisitMetrics.GetComponent<PlayerMetrics>();
+        // Update the text to display the current score
+        displayText3.text = "Heat Source Visits: " + heatSourceVisits.getHeatSourceVisits().ToString();
+
+
+        // heat source name
+        HeatSourceTrigger heatSource = displayHeatSourceMetrics.GetComponent<HeatSourceTrigger>();
+
+        if (currentTemp.getAmbientTemperature() == currentTemp.getCurrentTemperature())
+        {
+            hSource = "None";
+        }
+        else
+        {
+            hSource = heatSource.getCurrentHeatSource();
+        }
+
+        displayText4.text = "Heat Source: " + hSource;
+
+    }
+
+
+    private void displayRightText()
+    { 
+        string s1 = "To move the thermometer left or right, use <-- or --> arrow keys ";
+        string s2 = "To change day and night,\npress the Space Bar.";
+        string s3 = "To bring above info back, press 'H' key.";
+        rightText.text = s1 + "\n\n" + s2 + "\n\n" + s3;
+    }
+
+    private void displayBlank()
+    {
+        // erase text
+        rightText.text = "";
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        keyPressArrow = InputSystem.actions.FindAction("Move"); // arrow key binding
+        keyPressSpace = InputSystem.actions.FindAction("Jump"); // space bar key binding
+        keyPressHelp = InputSystem.actions.FindAction("Interact"); // 'H' key binding       
+        displayRightText();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerController currentTime = displayTimeMetrics.GetComponent<PlayerController>();
-        displayText1.text = "Time of day: " + currentTime.dayOrNight();
+        // display left text group on canvas
+        // always visible
+        displayLeftText();
 
+        // right side text disappes when arrrow or space bar is pressed
+        if (keyPressArrow.triggered || keyPressSpace.triggered)
+        {
+            //Debug.Log("hello");
+            displayBlank();
+        }
 
-        Temp currentTemp = displayTempMetrics.GetComponent<Temp>();
-        // Update the text to display the current score
-        displayText2.text = "Temperature: " + currentTemp.currentTemperature.ToString();
+        // right text reappears when 'H' key is pressed
+        if (keyPressHelp.triggered)
+        {
+            displayRightText();
+        }
 
-        PlayerMetrics heatSourceVisits = displayVisitMetrics.GetComponent<PlayerMetrics>();
-        // Update the text to display the current score
-        displayText3.text = "Heat Source Visits: " + heatSourceVisits.getHeatSourceVisits().ToString();
-
-        HeatSourceTrigger heatSource = displaySourceMetrics.GetComponent<HeatSourceTrigger>(); 
-        displayText4.text = "Heat Source: " + heatSource.getCurrentHeatSDource();
 
 
     }

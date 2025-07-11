@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca7a29fbfc9d954e97324a50415010e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heatInfluence: 10
+  heatInfluence: 0
 --- !u!65 &132972005
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1263,7 +1263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -20}
+  m_AnchoredPosition: {x: -19, y: -20}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396316831
@@ -1298,7 +1298,7 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_colorMode: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
@@ -1313,8 +1313,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1501,8 +1501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thermometer: {fileID: 1701001934}
   directionalLight: {fileID: 410087039}
-  leftTextGroup: {fileID: 0}
-  leftText: {fileID: 0}
   temperature: 0
 --- !u!1 &431292222
 GameObject:
@@ -1887,7 +1885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 449, y: 267}
+  m_AnchoredPosition: {x: 480, y: 230}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &536620715
@@ -1910,9 +1908,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\rPublic TextMeshProUGUI displayText; (or public Text displayText; if
-    not using TextMeshPro) declares a public variable of type TextMeshProUGUI (or
-    Text) to hold a reference to the Text component on your Canvas."
+  m_text: "\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1939,8 +1935,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1977,7 +1973,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -162.2425, y: 0, z: 0, w: -313.9746}
+  m_margin: {x: -51.928955, y: 0, z: 0, w: -134.84555}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2361,7 +2357,6 @@ GameObject:
   - component: {fileID: 956649268}
   - component: {fileID: 956649270}
   - component: {fileID: 956649269}
-  - component: {fileID: 956649271}
   m_Layer: 5
   m_Name: LeftTextGroup
   m_TagString: Untagged
@@ -2389,7 +2384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -79, y: 267}
+  m_AnchoredPosition: {x: -110, y: 240}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &956649269
@@ -2439,8 +2434,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2491,27 +2486,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956649267}
   m_CullTransparentMesh: 1
---- !u!114 &956649271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956649267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56c7b31702dafea43ad80546a6825690, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayTimeMetrics: {fileID: 1701001934}
-  displayTempMetrics: {fileID: 1701001934}
-  displayVisitMetrics: {fileID: 1701001934}
-  displaySourceMetrics: {fileID: 1701001934}
-  displayText1: {fileID: 396316831}
-  displayText2: {fileID: 2117470946}
-  displayText3: {fileID: 1078798576}
-  displayText4: {fileID: 2063887176}
-  currentTemp: 99
 --- !u!1 &957547366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1029472603}
+  - component: {fileID: 1029472604}
   - component: {fileID: 1029472602}
   - component: {fileID: 1029472601}
   - component: {fileID: 1029472600}
@@ -2746,6 +2721,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1029472604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029472599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c7b31702dafea43ad80546a6825690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTimeMetrics: {fileID: 1701001934}
+  displayTempMetrics: {fileID: 1701001934}
+  displayVisitMetrics: {fileID: 1701001934}
+  displayHeatSourceMetrics: {fileID: 1701001934}
+  displayText1: {fileID: 396316831}
+  displayText2: {fileID: 2117470946}
+  displayText3: {fileID: 1078798576}
+  displayText4: {fileID: 2063887176}
+  rightText: {fileID: 536620715}
 --- !u!1 &1078798574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -140}
+  m_AnchoredPosition: {x: -14, y: -80}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078798576
@@ -2830,8 +2826,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3391,8 +3387,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thermometer: {fileID: 1701001934}
   directionalLight: {fileID: 410087039}
-  leftTextGroup: {fileID: 0}
-  leftText: {fileID: 0}
   temperature: 0
 --- !u!65 &1701001940
 BoxCollider:
@@ -3454,7 +3448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca7a29fbfc9d954e97324a50415010e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heatInfluence: 10
+  heatInfluence: -1
 --- !u!114 &1701001945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3938,7 +3932,7 @@ GameObject:
   - component: {fileID: 1907313611}
   m_Layer: 0
   m_Name: NormalCubeTZ
-  m_TagString: icecubeTZ
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4286,7 +4280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -200}
+  m_AnchoredPosition: {x: -14, y: -110}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2063887176
@@ -4336,8 +4330,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4641,7 +4635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -80}
+  m_AnchoredPosition: {x: -14, y: -50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2117470946
@@ -4691,8 +4685,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

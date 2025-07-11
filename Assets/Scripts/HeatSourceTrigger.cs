@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Animations;
+
 using UnityEngine.InputSystem;
 
 
@@ -12,9 +15,8 @@ public class HeatSourceTrigger : MonoBehaviour
 
     // Dictionary to hold heat influence values 
     // for different heat sources populated in Start()
-    public float heatInfluence = 0f;
+    public float heatInfluence = -1f;
     private string currentHeatSource;
-
     // Start is called once before the first execution of Update 
     // after the MonoBehaviour is created
     private void OnTriggerEnter(Collider other) // other is the object that entered the trigger collider
@@ -22,7 +24,22 @@ public class HeatSourceTrigger : MonoBehaviour
         // debug purpose:
         //Debug.Log("other: " + other.name);
         //Debug.Log("this: " + this.name);
-        currentHeatSource = other.name;
+        //HeatSourceTrigger brick = noHeatSource.GetComponent<HeatSourceTrigger>();
+        //Debug.Log("Heat Influence On Trigger:this " + heatInfluence);
+        updateHeatSource(other.name);
+/*
+        if (this.heatInfluence != 0f)
+        {
+            Debug.Log("Heat Influence:inside " + this.heatInfluence);
+            Debug.Log("I am above " + this.name);
+            currentHeatSource = other.name;
+        }
+        else
+        {
+            Debug.Log("not a heat source.");
+            currentHeatSource = "None";
+        }
+*/
 
         // other is the collider that entered the trigger
         // that is, thermometer
@@ -31,12 +48,16 @@ public class HeatSourceTrigger : MonoBehaviour
         // check if thermometer gameobject has Temp component
         if (otherGameobject.GetComponent<Temp>() != null)
         {
+            //updateHeatSource(this.name);
+
             // debug purpose below:
-            //Debug.Log("this.tag:2 " + this.gameObject.tag);
+            
+            //currentHeatSource = this.name;
             // We have the thermometer object
             // We now know that the other gameObject IS the thermometer
-            //Debug.Log("other: " + other.name); // thermometer
+            //Debug.Log("other:2 " + other.name); // thermometer
             //Debug.Log("this: " + this.name); // heat source trigger
+            //Debug.Log("current heat source: " + currentHeatSource);
             //Debug.Log($"Thermometer collided with {this.gameObject.name}");
             //Debug.Log("dictionary: " + this.name + " = " + heatInfluenceDic[this.name]);
 
@@ -47,6 +68,13 @@ public class HeatSourceTrigger : MonoBehaviour
             tempRef.updateHeatSourceInfluence(heatInfluence);
             tempRef.updateTemp();
         }
+        /*
+        else
+        {
+            Debug.Log("not a heat source.");
+            currentHeatSource = "None";
+        }
+        */
 
         // move the thermometer based on the input from the keyboard
         //Vector2 moveValue = moveAction.ReadValue<Vector2>();
@@ -55,11 +83,13 @@ public class HeatSourceTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        currentHeatSource = "None";
 
         GameObject otherGameobject = other.gameObject;
 
         if (otherGameobject.GetComponent<Temp>() != null)
         {
+
             // We have the thermometer object
             // We now know that the other gameObject IS the thermometer
             //Debug.Log("other: " + other.name); // thermometer
@@ -70,19 +100,40 @@ public class HeatSourceTrigger : MonoBehaviour
             //reverse the heat influence
             tempRef.updateHeatSourceInfluence(0);
             tempRef.updateTemp();
+
+            //resetHeatSource();
         }
 
     }
 
 
-    public string getCurrentHeatSDource()
+    private void resetHeatSource()
     {
+        currentHeatSource = "None";
+ 
+    }
+
+    private void updateHeatSource(string source)
+    {
+        currentHeatSource = source;
+    }
+
+    public string getCurrentHeatSource()
+    {
+
         return currentHeatSource;
+
+    }
+
+    public float getHeatInfluence()
+    {
+        return heatInfluence;
     }
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
+        currentHeatSource = "None";
 
     }
 

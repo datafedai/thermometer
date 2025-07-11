@@ -24,10 +24,7 @@ public class PlayerController : MonoBehaviour
     private Quaternion targetRotation;
     private float rotationSpeed = 0.1f;
     private float sunTargetAngle = 50f;
-    public GameObject leftTextGroup;
-    //public GameObject rightTextGroup;
-    public GameObject leftText;
-    //public GameObject rightText;
+
     public float temperature;
 
         // ???? 
@@ -96,7 +93,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
-        changeDayAction = InputSystem.actions.FindAction("ChangeDay");
+        changeDayAction = InputSystem.actions.FindAction("Jump");
 
         //directionalLight.transform.Rotate(-1f, 0f, 0f);
         //directionalLight.transform.Rotate(-10f, 0f, 0f, Space.World);

@@ -38,9 +38,9 @@ public class Temp : MonoBehaviour
         //Debug.Log("updated_temperatureC: " + currentTemperature);
     }
 
-    public void updateHeatSourceInfluence(float heatInfluence)
+    public void updateHeatSourceInfluence(float influence)
     { 
-        heatSourceInfluence = heatInfluence;
+        heatSourceInfluence = influence;
     }
 
 
@@ -60,6 +60,20 @@ public class Temp : MonoBehaviour
 
     }
 
+    public float getAmbientTemperature()
+    {
+        return ambientTemperature;
+    }
+
+    public float getCurrentTemperature()
+    {
+        return currentTemperature;
+    }
+
+    public float getHeatSourceInfluence()
+    {
+        return heatSourceInfluence;
+    }
 
     void Start()
     {
