@@ -1,6 +1,8 @@
+using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.WSA;
 
@@ -16,11 +18,18 @@ public class PlayerController : MonoBehaviour
     //private int dayIndex = 0; // Initialize day index, even=day, odd=night
     //private bool dayNightIndex = false; // day:0, night:1
     private int spaceCount;
+    private bool isDayTime = true;
     
     //public Quaternion startRotation; // The rotation to start from
     private Quaternion targetRotation;
     private float rotationSpeed = 0.1f;
     private float sunTargetAngle = 50f;
+    public GameObject leftTextGroup;
+    //public GameObject rightTextGroup;
+    public GameObject leftText;
+    //public GameObject rightText;
+    public float temperature;
+
         // ???? 
     private void OnEnable()
     {
@@ -53,6 +62,15 @@ public class PlayerController : MonoBehaviour
     }
     */
 
+    public string dayOrNight()
+    {
+        if (spaceCount%2 == 0)
+            return "Day";
+        else
+            return "Night";
+    }
+
+
     private void rotateLight(float angle)
     {
         // rotate the directional light by the given angle
@@ -63,11 +81,13 @@ public class PlayerController : MonoBehaviour
     {
         if (spaceCount % 2 == 0) // day
         {
-            return false;
+            isDayTime = false;
+            return isDayTime;
         }
         else // night
         {
-            return true;
+            isDayTime = true;
+            return isDayTime;
         }
     }
 
@@ -98,6 +118,11 @@ public class PlayerController : MonoBehaviour
         spaceCount = 0;
         Debug.Log("space count: " + spaceCount);
         Debug.Log("dayNightIndex(): " + dayNightIndex(spaceCount));
+
+        //TextMeshProUGUI left = leftTextGroup.GetComponent<TextMeshProUGUI>();
+        //left.text = "10:30am";
+
+
     }
 
     // Update is called once per frame

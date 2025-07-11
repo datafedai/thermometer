@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 
 public class HeatSourceTrigger : MonoBehaviour
 {
-    public GameObject therm; // themometer temperature controller
-    public GameObject thermMove; // thermometer movement controller
+    //public GameObject therm; // themometer temperature controller
+    //public GameObject thermMove; // thermometer movement controller
     InputAction moveAction;
 
     // Dictionary to hold heat influence values 
     // for different heat sources populated in Start()
     public float heatInfluence = 0f;
+    private string currentHeatSource;
 
     // Start is called once before the first execution of Update 
     // after the MonoBehaviour is created
@@ -21,6 +22,7 @@ public class HeatSourceTrigger : MonoBehaviour
         // debug purpose:
         //Debug.Log("other: " + other.name);
         //Debug.Log("this: " + this.name);
+        currentHeatSource = other.name;
 
         // other is the collider that entered the trigger
         // that is, thermometer
@@ -73,6 +75,10 @@ public class HeatSourceTrigger : MonoBehaviour
     }
 
 
+    public string getCurrentHeatSDource()
+    {
+        return currentHeatSource;
+    }
 
     private void Start()
     {

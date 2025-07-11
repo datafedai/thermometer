@@ -77,7 +77,10 @@ public class PlayerMetrics : MonoBehaviour
 
 
 
-
+    public int getHeatSourceVisits()
+    {
+        return HeatSourcesVisited;
+    }
 
 
 
