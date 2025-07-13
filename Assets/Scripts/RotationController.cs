@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.WSA;
 
-public class RotationTest : MonoBehaviour
+public class RotationController : MonoBehaviour
 {
     private Quaternion currentRotation;
     private Quaternion targetRotation;
     public GameObject cyl;
     //public Vector3 targetPos;
     public Vector3 lookCyl;
-    public Vector3 lookCap;
-    public Vector3 rotationAxisCap;
+    public Vector3 lookCaps;
+    public Vector3 rotationAxisCaps;
     public Vector3 rotationAxisSph;
-    public Vector3 rotationAxisSun;
+    public Vector3 rotationAxisMoon; // axis for moon to revolve around
     public GameObject targetSph;
-    public GameObject targetCap;
+    public GameObject targetCaps;
     public GameObject targetMoon;
     public GameObject blackPoint;
 
@@ -38,13 +38,27 @@ public class RotationTest : MonoBehaviour
 
         // initial rotation
         lookCyl = new Vector3(1, 1, 0);
-        lookCap = new Vector3(1, -1, 0);
-        rotationAxisCap = new Vector3(-1, 1, 0);
+        lookCaps = new Vector3(1, -1, 0);
+        rotationAxisCaps = new Vector3(-1, 1, 0);
         rotationAxisSph = new Vector3(1, 1, 0);
-        rotationAxisSun = new Vector3(-1, 2, -5);
+        rotationAxisMoon = new Vector3(-1, 2, -5);
         //rotationAxis = Vector3.up;
     }
 
+
+    public void revolveMoon()
+    {
+        //Debug.Log("I am in revolveMoon()");
+        rotationAxisMoon = new Vector3(-1, 2, -5);
+        targetMoon.transform.RotateAround(blackPoint.transform.position, rotationAxisMoon, 10 * Time.deltaTime);
+        Debug.Log("moon position: " + targetMoon.transform.position);
+    }
+
+    public void hideMoon()
+    {
+        //rotationAxisMoon = new Vector3(-1, 2, -5);
+        targetMoon.transform.position = new Vector3(-90, -48, 42);
+    }
 
 
     // Update is called once per frame
@@ -61,11 +75,13 @@ public class RotationTest : MonoBehaviour
         cyl.transform.rotation = Quaternion.LookRotation(lookCyl, Vector3.up);
         //Debug.Log("rotation: " + cyl.transform.rotation);
         //cyl.transform.Rotate(look * 100f * Time.deltaTime);
-        targetCap.transform.rotation = Quaternion.LookRotation(lookCap, Vector3.up);
+        targetCaps.transform.rotation = Quaternion.LookRotation(lookCaps, Vector3.up);
 
-        targetCap.transform.RotateAround(cyl.transform.position, rotationAxisCap, 5 * Time.deltaTime);
-        //targetSph.transform.RotateAround(cyl.transform.position, rotationAxisSph, 30 * Time.deltaTime);
-        targetMoon.transform.RotateAround(blackPoint.transform.position, rotationAxisSun, 10 * Time.deltaTime);
+        targetCaps.transform.RotateAround(cyl.transform.position, rotationAxisCaps, 50 * Time.deltaTime);
+        targetSph.transform.RotateAround(cyl.transform.position, rotationAxisSph, 30 * Time.deltaTime);
+
+        // revolve moon
+        //revolveMoon();
   
     }
 }

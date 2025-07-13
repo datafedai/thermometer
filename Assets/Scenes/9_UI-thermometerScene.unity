@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &435451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,12 +153,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cyl: {fileID: 431292222}
   lookCyl: {x: 0, y: 0, z: 0}
-  lookCap: {x: 0, y: 0, z: 0}
-  rotationAxisCap: {x: 0, y: 0, z: 0}
+  lookCaps: {x: 0, y: 0, z: 0}
+  rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisSun: {x: 0, y: 0, z: 0}
+  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
-  targetCap: {fileID: 435450}
+  targetCaps: {fileID: 435450}
   targetMoon: {fileID: 1803251197}
   blackPoint: {fileID: 957547366}
 --- !u!136 &435452
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -347.37152, y: 0, z: 0, w: 0}
+  m_margin: {x: -350.8579, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1500,6 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thermometer: {fileID: 1701001934}
+  moon: {fileID: 1803251197}
   directionalLight: {fileID: 410087039}
   temperature: 0
 --- !u!1 &431292222
@@ -1521,7 +1522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &431292223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,12 +1537,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cyl: {fileID: 431292222}
   lookCyl: {x: 0, y: 0, z: 0}
-  lookCap: {x: 0, y: 0, z: 0}
-  rotationAxisCap: {x: 0, y: 0, z: 0}
+  lookCaps: {x: 0, y: 0, z: 0}
+  rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisSun: {x: 0, y: 0, z: 0}
+  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
-  targetCap: {fileID: 435450}
+  targetCaps: {fileID: 435450}
   targetMoon: {fileID: 1803251197}
   blackPoint: {fileID: 957547366}
 --- !u!136 &431292224
@@ -2520,12 +2521,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cyl: {fileID: 431292222}
   lookCyl: {x: 0, y: 0, z: 0}
-  lookCap: {x: 0, y: 0, z: 0}
-  rotationAxisCap: {x: 0, y: 0, z: 0}
+  lookCaps: {x: 0, y: 0, z: 0}
+  rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisSun: {x: 0, y: 0, z: 0}
+  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
-  targetCap: {fileID: 435450}
+  targetCaps: {fileID: 435450}
   targetMoon: {fileID: 1803251197}
   blackPoint: {fileID: 957547366}
 --- !u!135 &957547368
@@ -2897,7 +2898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1159468442
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3001,12 +3002,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cyl: {fileID: 431292222}
   lookCyl: {x: 0, y: 0, z: 0}
-  lookCap: {x: 0, y: 0, z: 0}
-  rotationAxisCap: {x: 0, y: 0, z: 0}
+  lookCaps: {x: 0, y: 0, z: 0}
+  rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisSun: {x: 0, y: 0, z: 0}
+  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 435450}
-  targetCap: {fileID: 435450}
+  targetCaps: {fileID: 435450}
   targetMoon: {fileID: 1803251197}
   blackPoint: {fileID: 957547366}
 --- !u!1 &1228782768
@@ -3386,6 +3387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thermometer: {fileID: 1701001934}
+  moon: {fileID: 1803251197}
   directionalLight: {fileID: 410087039}
   temperature: 0
 --- !u!65 &1701001940
@@ -3712,6 +3714,7 @@ GameObject:
   - component: {fileID: 1803251198}
   - component: {fileID: 1803251204}
   - component: {fileID: 1803251203}
+  - component: {fileID: 1803251205}
   m_Layer: 0
   m_Name: RMoon
   m_TagString: Untagged
@@ -3733,12 +3736,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cyl: {fileID: 431292222}
   lookCyl: {x: 0, y: 0, z: 0}
-  lookCap: {x: 0, y: 0, z: 0}
-  rotationAxisCap: {x: 0, y: 0, z: 0}
+  lookCaps: {x: 0, y: 0, z: 0}
+  rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisSun: {x: 0, y: 0, z: 0}
+  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
-  targetCap: {fileID: 435450}
+  targetCaps: {fileID: 435450}
   targetMoon: {fileID: 1803251197}
   blackPoint: {fileID: 957547366}
 --- !u!135 &1803251199
@@ -3918,6 +3921,22 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1803251205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803251197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed33d2523517084eb35fd52c6ab31a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thermometer: {fileID: 1701001934}
+  moon: {fileID: 1803251197}
+  directionalLight: {fileID: 410087039}
+  temperature: 0
 --- !u!1 &1907313609
 GameObject:
   m_ObjectHideFlags: 0

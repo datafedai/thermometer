@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 10f; // speed of the thermometer movement
     InputAction moveAction; // input action for movement from keyboard
 
+    public GameObject moon; // RMoon
+
     public GameObject directionalLight; // directional light for day/night cycle
     InputAction changeDayAction; // input action for changing day
     //private int dayIndex = 0; // Initialize day index, even=day, odd=night
@@ -23,9 +25,9 @@ public class PlayerController : MonoBehaviour
     //public Quaternion startRotation; // The rotation to start from
     private Quaternion targetRotation;
     private float rotationSpeed = 0.1f;
-    private float sunTargetAngle = 50f;
-
+    private float sunTargetAngle = 90f;
     public float temperature;
+    //public GameObject moonRotationControll;
 
         // ???? 
     private void OnEnable()
@@ -88,10 +90,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private bool isDayTimeCheck()
+    {
+        if (spaceCount % 2 == 0) // day
+        {
+            return true;
+        }
+        else // night
+        {
+            return false;
+        }
+    }
+
+
     // PlayerController.cs
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spaceCount = 0; // initial, day time
+        Debug.Log("space count: " + spaceCount);
+        Debug.Log("dayNightIndex(): " + dayNightIndex(spaceCount));
+
         moveAction = InputSystem.actions.FindAction("Move");
         changeDayAction = InputSystem.actions.FindAction("Jump");
 
@@ -112,9 +132,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("rotation2: " + directionalLight.transform.rotation);
         //directionalLight.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, 2f);
 
-        spaceCount = 0;
-        Debug.Log("space count: " + spaceCount);
-        Debug.Log("dayNightIndex(): " + dayNightIndex(spaceCount));
+
 
         //TextMeshProUGUI left = leftTextGroup.GetComponent<TextMeshProUGUI>();
         //left.text = "10:30am";
@@ -135,13 +153,28 @@ public class PlayerController : MonoBehaviour
 
         // interpolate the rotation of sun(directionalLight) using Lerp
         // if day time
-        
 
-        if (dayNightIndex(spaceCount) == false)
+
+        //if (dayNightIndex(spaceCount) == false)
+        if (isDayTimeCheck())
         {
+            // hide moon
+            RotationController moonRotation = moon.GetComponent<RotationController>();
+            moonRotation.hideMoon();
+
+
+            // rotate directional light
             directionalLight.transform.rotation =
                 Quaternion.Slerp(directionalLight.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
+        else
+        {
+            RotationController moonRotation = moon.GetComponent<RotationController>();
+            moonRotation.revolveMoon();
+            Debug.Log("moon");  
+        }
+
+
 
         Temp tempRef = thermometer.GetComponent<Temp>();
         tempRef.updateAmbientTemperature(dayNightIndex(spaceCount));
@@ -177,8 +210,12 @@ public class PlayerController : MonoBehaviour
                 // code to change the day to night time
                 // for example, you can change the background color or the light intensity
                 //rotateLight(90f);
-                rotateLight(90f);
+                rotateLight(2*90f);
 
+                // call revolveMoon() on RotationController
+                
+
+                
                 // update room temperature down to 10 degrees Celsius
                 //tempRef.updateTemp(-10f);
             }
