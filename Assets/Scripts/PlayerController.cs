@@ -156,9 +156,9 @@ public class PlayerController : MonoBehaviour
 
 
         //if (dayNightIndex(spaceCount) == false)
-        if (isDayTimeCheck())
+        if (isDayTimeCheck()) // day time
         {
-            // hide moon
+            // hide moon if day time
             RotationController moonRotation = moon.GetComponent<RotationController>();
             moonRotation.hideMoon();
 
@@ -167,11 +167,11 @@ public class PlayerController : MonoBehaviour
             directionalLight.transform.rotation =
                 Quaternion.Slerp(directionalLight.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
-        else
+        else // night time
         {
             RotationController moonRotation = moon.GetComponent<RotationController>();
             moonRotation.revolveMoon();
-            Debug.Log("moon");  
+            //Debug.Log("moon");  
         }
 
 

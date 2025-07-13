@@ -11,12 +11,12 @@ public class DisplayText : MonoBehaviour
     public GameObject displayTempMetrics;
     public GameObject displayVisitMetrics;
     public GameObject displayHeatSourceMetrics;
-    public TextMeshProUGUI displayText1; // Or public Text displayText; if not using TextMeshPro
-    public TextMeshProUGUI displayText2; // Or public Text displayText; if not using TextMeshPro
-    public TextMeshProUGUI displayText3; // Or public Text displayText; if not using TextMeshPro
-    public TextMeshProUGUI displayText4; // Or public Text displayText; if not using TextMeshPro
-    public TextMeshProUGUI rightText;
-    private string hSource;
+    public TextMeshProUGUI displayText1; // time
+    public TextMeshProUGUI displayText2; // temperature
+    public TextMeshProUGUI displayText3; // # of heat source visits
+    public TextMeshProUGUI displayText4; // current heat source
+    public TextMeshProUGUI rightText; // text on the right side of canvas
+    private string hSource; // heat source string
 
     InputAction keyPressArrow;
     InputAction keyPressSpace;
@@ -50,9 +50,10 @@ public class DisplayText : MonoBehaviour
         // heat source name
         HeatSourceTrigger heatSource = displayHeatSourceMetrics.GetComponent<HeatSourceTrigger>();
 
+        // to eliminate non-heat-source trigger, check if current temp is the same as the ambient temp
         if (currentTemp.getAmbientTemperature() == currentTemp.getCurrentTemperature())
         {
-            hSource = "None";
+            hSource = "None"; // no heat shource under the thermometer
         }
         else
         {
@@ -72,11 +73,13 @@ public class DisplayText : MonoBehaviour
         rightText.text = s1 + "\n\n" + s2 + "\n\n" + s3;
     }
 
+    // to make right text disappear when arrow or space bar is pressed
     private void displayBlank()
     {
         // erase text
         rightText.text = "";
     }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -97,7 +100,6 @@ public class DisplayText : MonoBehaviour
         // right side text disappes when arrrow or space bar is pressed
         if (keyPressArrow.triggered || keyPressSpace.triggered)
         {
-            //Debug.Log("hello");
             displayBlank();
         }
 

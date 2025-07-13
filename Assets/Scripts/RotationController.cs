@@ -51,7 +51,7 @@ public class RotationController : MonoBehaviour
         //Debug.Log("I am in revolveMoon()");
         rotationAxisMoon = new Vector3(-1, 2, -5);
         targetMoon.transform.RotateAround(blackPoint.transform.position, rotationAxisMoon, 10 * Time.deltaTime);
-        Debug.Log("moon position: " + targetMoon.transform.position);
+        //Debug.Log("moon position: " + targetMoon.transform.position);
     }
 
     public void hideMoon()
