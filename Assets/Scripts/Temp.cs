@@ -13,6 +13,7 @@ public class Temp : MonoBehaviour
     public float tempMin = -30;
     public GameObject tempBar;
     public float ratio;
+    //public GameObject dayNightCycle;
 
 
     private float getFillRatio(float temp)
@@ -100,9 +101,15 @@ public class Temp : MonoBehaviour
         // if t is small, the interpolation will be slower
         // t is devide by 15f to slow down the interpolation speed
         float t = Mathf.Abs(tempBarScale.y - tempBar.transform.localScale.y);
-       
-        tempBar.transform.localScale = Vector3.Lerp(tempBar.transform.localScale, tempBarScale, t/15f);
+
+        tempBar.transform.localScale = Vector3.Lerp(tempBar.transform.localScale, tempBarScale, t / 15f);
         // No interpolation code below:
         //tempBar.transform.localScale = tempBarScale;
+
+
+
+        // update temp
+        //updateAmbientTemperature(dayNightIndex(spaceCount));
+        updateTemp();
     }
 }

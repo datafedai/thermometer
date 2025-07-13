@@ -7,7 +7,7 @@ using UnityEngine.InputSystem; // Include if using TextMeshPro for text display
 public class DisplayText : MonoBehaviour
 {
 
-    public GameObject displayTimeMetrics;
+    //public GameObject displayTimeMetrics;
     public GameObject displayTempMetrics;
     public GameObject displayVisitMetrics;
     public GameObject displayHeatSourceMetrics;
@@ -22,6 +22,8 @@ public class DisplayText : MonoBehaviour
     InputAction keyPressSpace;
     InputAction keyPressHelp;
 
+    public GameObject celestial;
+
     private void OnEnable()
     {
         //inputActions.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
@@ -31,7 +33,7 @@ public class DisplayText : MonoBehaviour
     private void displayLeftText()
     {
         // current time of day: daytime or nighttime
-        PlayerController currentTime = displayTimeMetrics.GetComponent<PlayerController>();
+        DayNightCycle currentTime = celestial.GetComponent<DayNightCycle>();
         displayText1.text = "Time of day: " + currentTime.dayOrNight();
 
 
