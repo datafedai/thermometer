@@ -156,11 +156,8 @@ MonoBehaviour:
   lookCaps: {x: 0, y: 0, z: 0}
   rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
   targetCaps: {fileID: 435450}
-  targetMoon: {fileID: 1803251197}
-  blackPoint: {fileID: 957547366}
 --- !u!136 &435452
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1376,7 +1373,6 @@ GameObject:
   - component: {fileID: 410087041}
   - component: {fileID: 410087040}
   - component: {fileID: 410087042}
-  - component: {fileID: 410087043}
   m_Layer: 0
   m_Name: DirectionalLight
   m_TagString: Untagged
@@ -1487,21 +1483,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!114 &410087043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410087039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed33d2523517084eb35fd52c6ab31a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thermometer: {fileID: 1701001934}
-  temperature: 0
-  dayNightCycle: {fileID: 0}
 --- !u!1 &431292222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,11 +1520,8 @@ MonoBehaviour:
   lookCaps: {x: 0, y: 0, z: 0}
   rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
   targetCaps: {fileID: 435450}
-  targetMoon: {fileID: 1803251197}
-  blackPoint: {fileID: 957547366}
 --- !u!136 &431292224
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1882,6 +1860,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moon: {fileID: 1803251197}
   directionalLight: {fileID: 410087039}
+  rotationAxisMoon: {x: 0, y: 0, z: 0}
+  targetMoon: {fileID: 1803251197}
+  blackPoint: {fileID: 957547366}
 --- !u!4 &467106874
 Transform:
   m_ObjectHideFlags: 0
@@ -2571,11 +2552,8 @@ MonoBehaviour:
   lookCaps: {x: 0, y: 0, z: 0}
   rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
   targetCaps: {fileID: 435450}
-  targetMoon: {fileID: 1803251197}
-  blackPoint: {fileID: 957547366}
 --- !u!135 &957547368
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2781,7 +2759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c7b31702dafea43ad80546a6825690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayTempMetrics: {fileID: 1701001934}
+  temp: {fileID: 1701001945}
   displayVisitMetrics: {fileID: 1701001934}
   displayHeatSourceMetrics: {fileID: 1701001934}
   displayText1: {fileID: 396316831}
@@ -2789,7 +2767,7 @@ MonoBehaviour:
   displayText3: {fileID: 1078798576}
   displayText4: {fileID: 2063887176}
   rightText: {fileID: 536620715}
-  celestial: {fileID: 467106872}
+  dayNightCycle2: {fileID: 467106873}
 --- !u!1 &1078798574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,11 +3030,8 @@ MonoBehaviour:
   lookCaps: {x: 0, y: 0, z: 0}
   rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 435450}
   targetCaps: {fileID: 435450}
-  targetMoon: {fileID: 1803251197}
-  blackPoint: {fileID: 957547366}
 --- !u!1 &1228782768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,7 +3410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thermometer: {fileID: 1701001934}
   temperature: 0
-  dayNightCycle: {fileID: 0}
+  dayNightCycle: {fileID: 467106873}
 --- !u!65 &1701001940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3760,7 +3735,6 @@ GameObject:
   - component: {fileID: 1803251198}
   - component: {fileID: 1803251204}
   - component: {fileID: 1803251203}
-  - component: {fileID: 1803251205}
   m_Layer: 0
   m_Name: RMoon
   m_TagString: Untagged
@@ -3785,11 +3759,8 @@ MonoBehaviour:
   lookCaps: {x: 0, y: 0, z: 0}
   rotationAxisCaps: {x: 0, y: 0, z: 0}
   rotationAxisSph: {x: 0, y: 0, z: 0}
-  rotationAxisMoon: {x: 0, y: 0, z: 0}
   targetSph: {fileID: 1159468441}
   targetCaps: {fileID: 435450}
-  targetMoon: {fileID: 1803251197}
-  blackPoint: {fileID: 957547366}
 --- !u!135 &1803251199
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3872,8 +3843,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803251197}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -671.0602, y: 0, z: -1763.2231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -775.4, y: -38.3, z: -1554.4}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3967,21 +3938,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!114 &1803251205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803251197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed33d2523517084eb35fd52c6ab31a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thermometer: {fileID: 1701001934}
-  temperature: 0
-  dayNightCycle: {fileID: 0}
 --- !u!1 &1907313609
 GameObject:
   m_ObjectHideFlags: 0

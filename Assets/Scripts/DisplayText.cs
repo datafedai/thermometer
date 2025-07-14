@@ -8,7 +8,8 @@ public class DisplayText : MonoBehaviour
 {
 
     //public GameObject displayTimeMetrics;
-    public GameObject displayTempMetrics;
+    //public GameObject displayTempMetrics;
+    public Temp temp;
     public GameObject displayVisitMetrics;
     public GameObject displayHeatSourceMetrics;
     public TextMeshProUGUI displayText1; // time
@@ -22,7 +23,8 @@ public class DisplayText : MonoBehaviour
     InputAction keyPressSpace;
     InputAction keyPressHelp;
 
-    public GameObject celestial;
+    //public GameObject celestial;
+    public DayNightCycle dayNightCycle2;
 
     private void OnEnable()
     {
@@ -33,14 +35,16 @@ public class DisplayText : MonoBehaviour
     private void displayLeftText()
     {
         // current time of day: daytime or nighttime
-        DayNightCycle currentTime = celestial.GetComponent<DayNightCycle>();
-        displayText1.text = "Time of day: " + currentTime.dayOrNight();
 
+        //DayNightCycle currentTime = celestial.GetComponent<DayNightCycle>();
+        //displayText1.text = "Time of day: " + currentTime.dayOrNight();
+        displayText1.text = "Time of day: " + dayNightCycle2.getDayNightString();
 
         // current temperature
-        Temp currentTemp = displayTempMetrics.GetComponent<Temp>();
+        //Temp currentTemp = displayTempMetrics.GetComponent<Temp>();
         // Update the text to display the current score
-        displayText2.text = "Temperature: " + currentTemp.currentTemperature.ToString() + " \u00B0C";
+        //displayText2.text = "Temperature: " + currentTemp.currentTemperature.ToString() + " \u00B0C";
+        displayText2.text = "Temperature: " + temp.currentTemperature.ToString() + " \u00B0C";
 
 
         // heat source visit countr
@@ -53,7 +57,7 @@ public class DisplayText : MonoBehaviour
         HeatSourceTrigger heatSource = displayHeatSourceMetrics.GetComponent<HeatSourceTrigger>();
 
         // to eliminate non-heat-source trigger, check if current temp is the same as the ambient temp
-        if (currentTemp.getAmbientTemperature() == currentTemp.getCurrentTemperature())
+        if (temp.getAmbientTemperature() == temp.getCurrentTemperature())
         {
             hSource = "None"; // no heat shource under the thermometer
         }

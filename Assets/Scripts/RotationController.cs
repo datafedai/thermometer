@@ -14,11 +14,10 @@ public class RotationController : MonoBehaviour
     public Vector3 lookCaps;
     public Vector3 rotationAxisCaps;
     public Vector3 rotationAxisSph;
-    public Vector3 rotationAxisMoon; // axis for moon to revolve around
+
     public GameObject targetSph;
     public GameObject targetCaps;
-    public GameObject targetMoon;
-    public GameObject blackPoint;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -41,24 +40,12 @@ public class RotationController : MonoBehaviour
         lookCaps = new Vector3(1, -1, 0);
         rotationAxisCaps = new Vector3(-1, 1, 0);
         rotationAxisSph = new Vector3(1, 1, 0);
-        rotationAxisMoon = new Vector3(-1, 2, -5);
+
         //rotationAxis = Vector3.up;
     }
 
 
-    public void revolveMoon()
-    {
-        //Debug.Log("I am in revolveMoon()");
-        rotationAxisMoon = new Vector3(-1, 2, -5);
-        targetMoon.transform.RotateAround(blackPoint.transform.position, rotationAxisMoon, 10 * Time.deltaTime);
-        //Debug.Log("moon position: " + targetMoon.transform.position);
-    }
 
-    public void hideMoon()
-    {
-        //rotationAxisMoon = new Vector3(-1, 2, -5);
-        targetMoon.transform.position = new Vector3(-90, -48, 42);
-    }
 
 
     // Update is called once per frame
