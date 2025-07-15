@@ -96,8 +96,9 @@ public class PlayerController : MonoBehaviour
 
         if (changeDayAction.triggered)
         {
-            Debug.Log("day night cycle triggered");
+  
             Debug.Log("day: " + dayNightCycle.getIsDayTimeValue());              
+            Debug.Log("day night cycle triggered. switching day and night.");
             dayNightCycle.switchDayNight();
             Debug.Log("day: " + dayNightCycle.getIsDayTimeValue());                
         }

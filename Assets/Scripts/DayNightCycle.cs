@@ -23,17 +23,6 @@ public class DayNightCycle : MonoBehaviour
     public GameObject targetMoon;
     public GameObject blackPoint;
 
-    public void switchDayNight()
-    {
-        if (isDayTime)
-        {
-            isDayTime = false;
-        }
-        else
-        {
-            isDayTime = true;
-        }
-    }
 
 
     public bool getIsDayTimeValue()
@@ -87,6 +76,20 @@ public class DayNightCycle : MonoBehaviour
 
     */
 
+    public void switchDayNight()
+    {
+        if (isDayTime)
+        {
+            isDayTime = false;
+        }
+        else
+        {
+            isDayTime = true;
+        }
+
+    }
+
+
     public void triggerDayNightChange()
     {
         // change the day based on the input from the keyboard
@@ -110,10 +113,19 @@ public class DayNightCycle : MonoBehaviour
             // code to change the day to day time
             // for example, you can change the background color or the light intensity
             //directionalLight.transform.Rotate(90f, 180f, 180f, Space.World);
-            rotateLight(15f);
+            //rotateLight(15f);
             //tempRef.updateTemp(0f);
-
             // room temperature stays 20 dgrees Celsius
+
+
+            // hide moon if day time
+            //RotationController moonRotation = moon.GetComponent<RotationController>();
+            //moonRotation.hideMoon();
+            hideMoon();
+
+            // rotate directional light
+            directionalLight.transform.rotation =
+                Quaternion.Slerp(directionalLight.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
         else
         {
@@ -122,14 +134,19 @@ public class DayNightCycle : MonoBehaviour
             // for example, you can change the background color or the light intensity
             //rotateLight(90f);
             //rotateLight(2 * 90f);
-            directionalLight.transform.Rotate(20, 0f, 0f, Space.World);
-
+            //directionalLight.transform.Rotate(20, 0f, 0f, Space.World);
             // call revolveMoon() on RotationController
-
-
-
             // update room temperature down to 10 degrees Celsius
             //tempRef.updateTemp(-10f);
+
+            // hide sun, directional light
+            directionalLight.transform.eulerAngles = new Vector3(260, 0, 0);
+
+            //RotationController moonRotation = moon.GetComponent<RotationController>();
+            //moonRotation.revolveMoon();
+            //Debug.Log("moon");
+            revolveMoon();
+
         }
 
 
@@ -161,7 +178,7 @@ public class DayNightCycle : MonoBehaviour
         Debug.Log("space count: " + spaceCount);
         Debug.Log("dayNightIndex(): " + dayNightIndex(spaceCount));
 
-*/
+        */
 
         rotationAxisMoon = new Vector3(-1, 2, -5);
 
@@ -182,6 +199,10 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        triggerDayNightChange();
+
+        /*
         //if (dayNightIndex(spaceCount) == false)
         if (isDayTime) // day time
         {
@@ -197,27 +218,18 @@ public class DayNightCycle : MonoBehaviour
         else // night time
         {
             // hide sun, directional light
-            /*
-            directionalLight.transform.rotation =
-                Quaternion.Slerp(directionalLight.transform.rotation, hideSunRotation, Time.deltaTime * 10* rotationSpeed);
-                */
-            directionalLight.transform.eulerAngles = new Vector3(260, 0, 0);
 
-            //RotationController moonRotation = moon.GetComponent<RotationController>();
-            //moonRotation.revolveMoon();
-            //Debug.Log("moon");
-            revolveMoon();  
+        directionalLight.transform.eulerAngles = new Vector3(260, 0, 0);
 
-
+        //RotationController moonRotation = moon.GetComponent<RotationController>();
+        //moonRotation.revolveMoon();
+        //Debug.Log("moon");
+        revolveMoon();
         }
-
-
-
-
-
-
-
-
+        */
 
     }
+
+
+
 }
